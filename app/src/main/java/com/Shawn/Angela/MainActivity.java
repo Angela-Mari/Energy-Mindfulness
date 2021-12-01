@@ -1,5 +1,6 @@
 package com.Shawn.Angela;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
@@ -9,7 +10,9 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.BatteryManager;
 import android.os.Bundle;
+import android.widget.CalendarView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,11 +36,22 @@ public class MainActivity extends AppCompatActivity {
         int level = batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
         int scale = batteryStatus.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
 
-        float batteryPct = level * 100 / (float)scale;
+        float batteryPct = level * 100 / (float) scale;
 
         batteryText.setText("Current Battery Percentage: " + String.valueOf(batteryPct));
 
         //sendNotification(batteryPct);
+        CalendarView calendarView = findViewById(R.id.calendarView);
+        if (calendarView != null) {
+            calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+                @Override
+                public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+                    // Note that months are indexed from 0. So, 0 means January, 1 means february, 2 means march etc.
+                    String msg = "Selected date is " + dayOfMonth + "/" + (month + 1) + "/" + year;
+                    Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 
     @Override
