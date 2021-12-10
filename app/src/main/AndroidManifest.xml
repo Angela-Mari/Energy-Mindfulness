@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EnergyMindfulness">
         <activity
+            android:name=".CreateJournalActivity"
+            android:exported="true" />
+        <activity
             android:name=".JournalDetailView"
             android:exported="true" />
         <activity
