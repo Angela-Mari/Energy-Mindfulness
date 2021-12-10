@@ -20,6 +20,9 @@
             android:id="@+id/myTitle1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
             android:text="Title"
             android:textAlignment="center"
             android:textSize="24sp"
@@ -31,34 +34,60 @@
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="11dp"
-            tools:layout_editor_absoluteY="53dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toBottomOf="@+id/myTitle1"
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
             android:id="@+id/myBatteryEnergy"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:text="Phone Battery % "
-            tools:layout_editor_absoluteX="169dp"
-            tools:layout_editor_absoluteY="129dp" />
+            card_view:layout_constraintBottom_toTopOf="@+id/moodCardView"
+            card_view:layout_constraintStart_toStartOf="@+id/moodCardView"
+            card_view:layout_constraintTop_toBottomOf="@+id/dateTimeView" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/moodCardView"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="My Emotional Battery %"
-            tools:layout_editor_absoluteX="169dp"
-            tools:layout_editor_absoluteY="162dp" />
+            android:layout_height="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:text="Mood: "
+            card_view:layout_constraintBottom_toTopOf="@+id/textPreview"
+            card_view:layout_constraintStart_toEndOf="@+id/imageView"
+            card_view:layout_constraintTop_toBottomOf="@+id/myBatteryEnergy" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/dateTimeView"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginBottom="5dp"
+            android:text="Date and Time"
+            card_view:layout_constraintBottom_toTopOf="@+id/myBatteryEnergy"
+            card_view:layout_constraintStart_toStartOf="@+id/myBatteryEnergy"
+            card_view:layout_constraintTop_toTopOf="@+id/imageView" />
+
+        <TextView
+            android:id="@+id/textPreview"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:text="TextView"
-            tools:layout_editor_absoluteX="171dp"
-            tools:layout_editor_absoluteY="54dp" />
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintStart_toStartOf="@+id/moodCardView"
+            card_view:layout_constraintTop_toBottomOf="@+id/moodCardView" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>
