@@ -30,14 +30,17 @@ public class MainActivity extends AppCompatActivity {
     private NotificationManagerCompat notificationManager;
     Button createJournalEntry;
     TextView batteryText;
-
+    JournalOpenHelper helper;
     ActivityResultLauncher<Intent> launcher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //SQLite
+        helper = new JournalOpenHelper(this);
 
+        // notifications
         notificationManager = NotificationManagerCompat.from(this);
 
         // get battery percentage
@@ -74,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
                             double battery = data.getDoubleExtra("battery", -1);
 
                             Journal newJournal = new Journal(title, date, time, journalEntry, mood, battery);
+                            helper.insertJournal(newJournal);
                             Log.d(TAG, "onActivityResult: New Journal Entry: " + newJournal.toString());
                         }
                         else {
@@ -110,26 +114,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
     @Override
     protected void onStop () {
         super.onStop();
         startService( new Intent( this, NotificationService.class ));
     }
-
-//    public void sendNotification(float batteryCharge){
-//        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, BaseApp.CHANNEL_1_ID)
-//                .setSmallIcon(R.drawable.ic_baseline_battery_full_1)
-//                .setContentTitle("What is your Emotional Battery Status")
-//                .setContentText("Remember to take a break from your phone to charge your battery. Your phone's battery is at " + String.valueOf(batteryCharge))
-//                .setPriority(NotificationCompat.PRIORITY_HIGH)
-//                .setCategory(NotificationCompat.CATEGORY_STATUS);
-//
-//        builder.build();
-//
-//        notificationManager.notify(1, builder.build());
-//
-//    }
-
-
 
 }
