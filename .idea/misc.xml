@@ -3,11 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/layout/activity_create_journal.xml" value="0.20380434782608695" />
-        <entry key="app/src/main/res/layout/activity_journal_detail_view.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_journal_view.xml" value="0.23822463768115942" />
+        <entry key="app/src/main/res/layout/activity_create_journal.xml" value="0.18802083333333333" />
+        <entry key="app/src/main/res/layout/activity_journal_detail_view.xml" value="0.369288551254503" />
+        <entry key="app/src/main/res/layout/activity_journal_view.xml" value="0.26666666666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22686934080065776" />
-        <entry key="app/src/main/res/layout/journal_card.xml" value="0.4392899225563986" />
+        <entry key="app/src/main/res/layout/journal_card.xml" value="0.18802083333333333" />
       </map>
     </option>
   </component>

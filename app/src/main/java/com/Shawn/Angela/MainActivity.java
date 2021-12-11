@@ -103,39 +103,10 @@ public class MainActivity extends AppCompatActivity {
                     // Note that months are indexed from 0. So, 0 means January, 1 means february, 2 means march etc.
                     String msg = "Selected date is " + (month + 1) + "/" + dayOfMonth + "/" + year;
                     //Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
-                    String[] colors_array;
-                    colors_array = new String[5];
-                    colors_array[0] = "Red (Terrible)";
-                    colors_array[1] = "Orange (Bad)";
-                    colors_array[2] = "Yellow (Okay)";
-                    colors_array[3] = "Green (Good)";
-                    colors_array[4] = "Blue (Amazing)";
-                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                    builder.setTitle(msg)
-                            .setItems(colors_array, new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int index) {
-                                   if (index == 0){
-                                       Toast.makeText(MainActivity.this, "Terrible", Toast.LENGTH_SHORT).show();
-                                   }
-                                   else if (index == 1){
-                                       Toast.makeText(MainActivity.this, "Bad", Toast.LENGTH_SHORT).show();
-                                    }
-                                    else if (index == 2){
-                                       Toast.makeText(MainActivity.this, "Okay", Toast.LENGTH_SHORT).show();
-                                    }
-                                    else if (index == 3){
-                                       Toast.makeText(MainActivity.this, "Good", Toast.LENGTH_SHORT).show();
-                                    }
-                                    else if (index == 4) {
-                                        Toast.makeText(MainActivity.this, "Amazing", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                        });
-                builder.show();
+                    Intent intent = new Intent(MainActivity.this, JournalView.class);
+                    startActivity(intent);
                 }
-
             });
-
         }
     }
 
