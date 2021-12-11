@@ -12,6 +12,9 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.BatteryManager;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.CalendarView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -58,6 +61,28 @@ public class MainActivity extends AppCompatActivity {
             });
         }
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // we need to get a menu inflater to
+        // inflate main_menu.xml
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.return_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        // figure out which menuItem this is
+        int itemId = item.getItemId();
+        switch(itemId){
+            case R.id.menuBack:
+                finish();
+                return true; // this event has been consumed/handled
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 
     @Override
     protected void onStop () {
