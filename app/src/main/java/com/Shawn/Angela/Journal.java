@@ -49,6 +49,19 @@ public class Journal {
     public double getBatteryPercentage() {
         return batteryPercentage;
     }
+
+    @Override
+    public String toString() {
+        return "Journal{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", date='" + date + '\'' +
+                ", time='" + time + '\'' +
+                ", journalEntry='" + journalEntry + '\'' +
+                ", mood='" + mood + '\'' +
+                ", batteryPercentage=" + batteryPercentage +
+                '}';
+    }
 }
 
 
