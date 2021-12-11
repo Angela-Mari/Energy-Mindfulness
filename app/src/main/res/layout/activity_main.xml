@@ -14,7 +14,8 @@
         android:layout_marginBottom="15dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/name"
+        android:minHeight="48dp"
+        android:hint="@string/name"
         app:layout_constraintBottom_toTopOf="@+id/batteryLife"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,9 +27,22 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:text="@string/current_battery_charge"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/gifImageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="5dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/happy_battery"
+        app:layout_constraintBottom_toTopOf="@+id/createJournalButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/batteryLife" />
 
     <CalendarView
         android:id="@+id/calendarView"
@@ -43,9 +57,13 @@
         android:id="@+id/createJournalButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginBottom="5dp"
         android:text="@string/daily_journal"
+        android:textColor="#212121"
+        app:cornerRadius="50px"
+        app:layout_constraintBottom_toTopOf="@+id/calendarView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/batteryLife" />
+        app:layout_constraintTop_toBottomOf="@+id/gifImageView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

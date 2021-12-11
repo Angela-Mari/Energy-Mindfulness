@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
         float batteryPct = level * 100 / (float) scale;
 
-        batteryText.setText("Current Battery Percentage: " + String.valueOf(batteryPct));
+        batteryText.setText("Current Battery Percentage: " + String.valueOf(batteryPct) + "%");
 
         launcher = launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
                 new ActivityResultCallback<ActivityResult>() {

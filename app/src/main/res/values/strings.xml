@@ -2,7 +2,7 @@
     <string name="app_name">Energy Mindfulness</string>
     <string name="name">Name</string>
     <string name="current_battery_charge">Current battery charge:</string>
-    <string name="daily_journal">Daily Journal</string>
+    <string name="daily_journal">New Journal Entry</string>
     <string name="title_activity_journal_view_activty">JournalViewActivty</string>
 
     <string-array name="mood_array">
