@@ -18,6 +18,7 @@ import android.content.IntentFilter;
 import android.os.BatteryManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
         //SQLite
         helper = new JournalOpenHelper(this);
@@ -113,6 +115,9 @@ public class MainActivity extends AppCompatActivity {
             });
         }
     }
+
+
+
 
 
     @Override

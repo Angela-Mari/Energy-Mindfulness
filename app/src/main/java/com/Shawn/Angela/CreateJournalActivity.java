@@ -8,6 +8,7 @@ import android.content.IntentFilter;
 import android.os.BatteryManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -37,6 +38,9 @@ public class CreateJournalActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_journal);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         Log.d(TAG, "onCreate: in CreateJournalActivity");
         // Wire up the XML to this Activity
@@ -101,6 +105,20 @@ public class CreateJournalActivity extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+
+                Intent intent = new Intent(CreateJournalActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }}
 
     // Helper Spinner Class
     class SpinnerActivity extends Activity implements AdapterView.OnItemSelectedListener  {
