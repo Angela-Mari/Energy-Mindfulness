@@ -1,7 +1,7 @@
 package com.Shawn.Angela;
 
 public class Journal {
-    private int id = -1;
+    private int id;
     private String title;
     private String date;
     private String time;
@@ -10,6 +10,17 @@ public class Journal {
     private double batteryPercentage;
 
     public Journal(String title, String date, String time, String journalEntry, String mood, double batteryPercentage) {
+        this.id = -1;
+        this.title = title;
+        this.date = date;
+        this.time = time;
+        this.journalEntry = journalEntry;
+        this.mood = mood;
+        this.batteryPercentage = batteryPercentage;
+    }
+
+    public Journal(int id, String title, String date, String time, String journalEntry, String mood, double batteryPercentage) {
+        this.id = id;
         this.title = title;
         this.date = date;
         this.time = time;
