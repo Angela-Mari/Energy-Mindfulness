@@ -4,12 +4,14 @@
     <string name="current_battery_charge">Current battery charge:</string>
     <string name="daily_journal">Daily Journal</string>
     <string name="title_activity_journal_view_activty">JournalViewActivty</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string-array name="mood_array">
+        <item>Happy &#128522;</item>
+        <item>Sad &#128557;</item>
+        <item>Mad &#128545;</item>
+        <item>Tired &#128564;</item>
+        <item>Hopeful &#129300;</item>
+    </string-array>
+
+
 </resources>
