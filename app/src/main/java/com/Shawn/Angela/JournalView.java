@@ -138,6 +138,9 @@ public class JournalView extends AppCompatActivity {
             TextView myPreview;
             ImageView image1;
 
+            // Store info needed to send to detail view
+            String fullEntryText;
+
             public CustomViewHolder(@NonNull View itemView) {
                 super(itemView);
 
@@ -148,10 +151,15 @@ public class JournalView extends AppCompatActivity {
                 myPreview = itemView.findViewById(R.id.textPreview);
                 image1 = itemView.findViewById(R.id.imageView1);
 
+
+
                 itemView.setOnClickListener(this);
             }
 
             public void updateView(Journal j){
+
+                // Update info to send to detail view
+                fullEntryText = j.getJournalEntry();
 
                 myTitle.setText(j.getTitle());
                 dateTime.setText(j.getTime());
@@ -185,6 +193,9 @@ public class JournalView extends AppCompatActivity {
             public void onClick(View view) {
                 Log.d(TAG, "onClick:");
                 Intent intent = new Intent(JournalView.this, JournalDetailView.class);
+                //put extra info for the detail view
+                intent.putExtra("fullEntryText", fullEntryText);
+
                 startActivity(intent);
             }
 

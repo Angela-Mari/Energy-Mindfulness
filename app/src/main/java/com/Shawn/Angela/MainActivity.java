@@ -55,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
         //SQLite
         helper = new JournalOpenHelper(this);
 
-//        helper.insertJournal(new Journal("Entry from yesterday", "2021.12.11", "Sat, 11 Dec 2021 12:18", "text", "happy", 50));
 //        helper.insertJournal(new Journal("Another entry from yesterday", "2021.12.11", "Sat, 11 Dec 2021 12:18", "text", "happy", 50));
 
         // notifications

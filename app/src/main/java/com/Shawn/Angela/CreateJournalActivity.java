@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -80,6 +81,13 @@ public class CreateJournalActivity extends AppCompatActivity {
         saveEntry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //validation
+
+                if (String.valueOf(editTitleView.getText()).trim().equals("")){
+                    Toast.makeText(CreateJournalActivity.this, "Title must not be blank", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
                 Log.d(TAG, "onClick: click save entry");
                 Intent intent = new Intent(CreateJournalActivity.this, MainActivity.class);
                 Log.d(TAG, "onClick: create title: " + editTitleView.getText());
