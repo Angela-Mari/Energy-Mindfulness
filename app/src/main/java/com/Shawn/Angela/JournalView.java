@@ -16,6 +16,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -32,12 +33,16 @@ public class JournalView extends AppCompatActivity {
     JournalOpenHelper helper;
     ActivityResultLauncher<Intent> launcher;
     String myDate;
+    String dateTitle;
     TextView title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_journal_view);
+
+        //menu back
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Log.d(TAG, "onCreate: in journal view");
         //title
@@ -56,7 +61,8 @@ public class JournalView extends AppCompatActivity {
 
             myDate = year + "." + month + "." + day;
             Log.d(TAG, "onCreate: myDate " + myDate);
-            title.setText("Journal Entries for " + day + "/" + month + "/" + year);
+            dateTitle = day + "/" + month + "/" + year;
+            title.setText(dateTitle);
         }
 
         // get journals for that day
@@ -65,6 +71,7 @@ public class JournalView extends AppCompatActivity {
 
         if (myDate != null){
            journalEntries = helper.getSelectJournalsByDate(myDate);
+           title.setText(journalEntries.size() + " " + (journalEntries.size() == 1? "Journal Entry for " : "Journal Entries for " ) + dateTitle);
             Log.d(TAG, "onCreate: we got journals " + journalEntries);
         }
 
@@ -84,6 +91,20 @@ public class JournalView extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+
+                Intent intent = new Intent(JournalView.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
     //nested class
     class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomViewHolder> {
         @NonNull
@@ -134,13 +155,17 @@ public class JournalView extends AppCompatActivity {
 
                 myTitle.setText(j.getTitle());
                 dateTime.setText(j.getTime());
-                myBatt.setText(String.valueOf(j.getBatteryPercentage())+ "%");
-                myMood.setText(String.valueOf(j.getMood().charAt(j.getMood().length()-1)));
+                myBatt.setText("Battery: " + String.valueOf(j.getBatteryPercentage()) + "%");
+
+                String[] splitStr = j.getMood().split("\\s+");
+                myMood.setText("Mood: " + splitStr[1]);
                 int splitNum = 100;
+                boolean dotdot = true;
                 if (j.getJournalEntry().length() < 100){
-                    splitNum = j.getJournalEntry().length() -1;
+                    splitNum = j.getJournalEntry().length();
                 }
-                myPreview.setText(j.getJournalEntry().substring(0, splitNum) + "...");
+                myPreview.setText(j.getJournalEntry().substring(0, splitNum) + (dotdot? "... " : ""));
+
                 if (j.getBatteryPercentage() > 75){
                     image1.setImageResource(R.drawable.happy_battery_2);
                 }
