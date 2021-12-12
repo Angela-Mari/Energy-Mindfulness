@@ -15,10 +15,11 @@ import java.util.List;
 public class JournalDetailView extends AppCompatActivity {
 
     static final String TAG = "JournalDetailView";
-    JournalOpenHelper helper;
-    ActivityResultLauncher<Intent> launcher;
-    String myDate;
-    TextView title;
+
+    TextView dateTextView;
+    TextView batteryView;
+    TextView moodView;
+    TextView titleTextView;
     TextView journalTextView;
 
     @Override
@@ -29,6 +30,10 @@ public class JournalDetailView extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //wire up TextViews
+        dateTextView = findViewById(R.id.date);
+        batteryView = findViewById(R.id.batteryLevel);
+        titleTextView = findViewById(R.id.title);
+        moodView = findViewById(R.id.mood);
         journalTextView = findViewById(R.id.journalEntry);
 
         //get items passes in from Journal View
@@ -37,6 +42,16 @@ public class JournalDetailView extends AppCompatActivity {
             Log.d(TAG, "activity result OK");
             String fullEntryText = intent.getStringExtra("fullEntryText");
             journalTextView.setText(fullEntryText);
+            String entryTitle = intent.getStringExtra("entryTitle");
+            titleTextView.setText(entryTitle);
+//            String entryDate = intent.getStringExtra("entryDate");
+//            dateTextView.setText(entryDate);
+            String entryDateTime = intent.getStringExtra("entryDateTime");
+            dateTextView.setText(entryDateTime);
+            String entryMood = intent.getStringExtra("entryMood");
+            moodView.setText(entryMood);
+            int batteryEntry = intent.getIntExtra("batteryEntry", 0);
+            batteryView.setText(String.valueOf(batteryEntry));
         }
     }
     @Override

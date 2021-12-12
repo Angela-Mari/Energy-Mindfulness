@@ -140,6 +140,11 @@ public class JournalView extends AppCompatActivity {
 
             // Store info needed to send to detail view
             String fullEntryText;
+            String entryTitle;
+            String entryDate;
+            String entryDateTime;
+            String entryMood;
+            int batteryEntry;
 
             public CustomViewHolder(@NonNull View itemView) {
                 super(itemView);
@@ -160,6 +165,11 @@ public class JournalView extends AppCompatActivity {
 
                 // Update info to send to detail view
                 fullEntryText = j.getJournalEntry();
+                entryTitle = j.getTitle();
+                entryDate = j.getDate();
+                entryDateTime = j.getTime();
+                entryMood = j.getMood();
+                batteryEntry = j.getBatteryPercentage();
 
                 myTitle.setText(j.getTitle());
                 dateTime.setText(j.getTime());
@@ -195,6 +205,11 @@ public class JournalView extends AppCompatActivity {
                 Intent intent = new Intent(JournalView.this, JournalDetailView.class);
                 //put extra info for the detail view
                 intent.putExtra("fullEntryText", fullEntryText);
+                intent.putExtra("entryTitle", entryTitle);
+                intent.putExtra("entryDate", entryDate);
+                intent.putExtra("entryDateTime", entryDateTime);
+                intent.putExtra("entryMood", entryMood);
+                intent.putExtra("batteryEntry", batteryEntry);
 
                 startActivity(intent);
             }
