@@ -15,11 +15,11 @@ import java.util.List;
 public class JournalDetailView extends AppCompatActivity {
 
     static final String TAG = "JournalDetailView";
-    List<Journal> journalEntries;
     JournalOpenHelper helper;
     ActivityResultLauncher<Intent> launcher;
     String myDate;
     TextView title;
+    TextView journalTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +28,21 @@ public class JournalDetailView extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        //wire up TextViews
+        journalTextView = findViewById(R.id.journalEntry);
+
+        //get items passes in from Journal View
+        Intent intent = getIntent();
+        if (intent != null) { // good practice
+            Log.d(TAG, "activity result OK");
+            String fullEntryText = intent.getStringExtra("fullEntryText");
+            journalTextView.setText(fullEntryText);
+        }
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
+        // make sure to pass back date
         switch (item.getItemId()) {
             case android.R.id.home:
 
