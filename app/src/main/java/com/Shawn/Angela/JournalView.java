@@ -16,6 +16,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -38,6 +39,8 @@ public class JournalView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_journal_view);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Log.d(TAG, "onCreate: in journal view");
         //title
@@ -150,17 +153,14 @@ public class JournalView extends AppCompatActivity {
                 if (j.getBatteryPercentage() <= 25){
                     image1.setImageResource(R.drawable.sad_battery);
                 }
-
             }
-
             //3. set up click listener
 
             //3.1 learn about alert
             @Override
             public void onClick(View view) {
-                Log.d(TAG, "onClick:");
+                Log.d(TAG, "onClick: Journal Detail View");
             }
-
         }
     }
 }
