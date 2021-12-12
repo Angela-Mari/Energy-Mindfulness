@@ -35,7 +35,6 @@ public class JournalDetailView extends AppCompatActivity {
             case android.R.id.home:
 
                 Intent intent = new Intent(JournalDetailView.this, JournalView.class);
-
                 startActivity(intent);
                 finish();
                 return true;
