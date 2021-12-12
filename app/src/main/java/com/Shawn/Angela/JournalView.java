@@ -184,6 +184,8 @@ public class JournalView extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.d(TAG, "onClick:");
+                Intent intent = new Intent(JournalView.this, JournalDetailView.class);
+                startActivity(intent);
             }
 
         }
