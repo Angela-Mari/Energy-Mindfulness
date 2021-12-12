@@ -91,7 +91,6 @@ public class JournalOpenHelper extends SQLiteOpenHelper {
     public Cursor getDateCursor(String date){
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.query(ENTRIES_TABLE, new String[]{ID, TITLE, DATE, TIME, JOURNAL_ENTRY, MOOD, BATTERY_PERCENTAGE}, "DATE =?", new String[]{""+date}, null, null, null);
-        cursor.moveToFirst();
         return cursor;
     }
 

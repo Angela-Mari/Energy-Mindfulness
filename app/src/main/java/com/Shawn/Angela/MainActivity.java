@@ -42,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
         //SQLite
         helper = new JournalOpenHelper(this);
 
+//        helper.insertJournal(new Journal("Entry from yesterday", "2021.12.11", "Sat, 11 Dec 2021 12:18", "text", "happy", 50));
+//        helper.insertJournal(new Journal("Another entry from yesterday", "2021.12.11", "Sat, 11 Dec 2021 12:18", "text", "happy", 50));
+
         // notifications
         notificationManager = NotificationManagerCompat.from(this);
 
@@ -51,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
 
         IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
         Intent batteryStatus = this.registerReceiver(null, ifilter);
-
 
         int level = batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
 

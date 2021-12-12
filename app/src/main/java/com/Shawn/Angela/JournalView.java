@@ -140,7 +140,17 @@ public class JournalView extends AppCompatActivity {
                 if (j.getJournalEntry().length() < 100){
                     splitNum = j.getJournalEntry().length() -1;
                 }
-                myPreview.setText(j.getJournalEntry().substring(splitNum) + "...");
+                myPreview.setText(j.getJournalEntry().substring(0, splitNum) + "...");
+                if (j.getBatteryPercentage() > 75){
+                    image1.setImageResource(R.drawable.happy_battery_2);
+                }
+                if (j.getBatteryPercentage() <= 75 && j.getBatteryPercentage() > 25){
+                    image1.setImageResource(R.drawable.meh_battery);
+                }
+                if (j.getBatteryPercentage() <= 25){
+                    image1.setImageResource(R.drawable.sad_battery);
+                }
+
             }
 
             //3. set up click listener
