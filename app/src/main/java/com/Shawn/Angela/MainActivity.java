@@ -15,6 +15,7 @@ import android.app.Notification;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.BatteryManager;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,22 +23,34 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     static final String TAG = "MainActivtyTAG";
+
+    static final String SHARED_PREFERENCES_FNAME = "sharedpreffname";
+    static final String NAME_KEY = "name";
+
     private NotificationManagerCompat notificationManager;
     Button createJournalEntry;
     TextView batteryText;
     JournalOpenHelper helper;
     ActivityResultLauncher<Intent> launcher;
+    EditText nameEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
+        //shared pref
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFERENCES_FNAME, 0);
+        String name = sharedPreferences.getString(NAME_KEY, ""); // second arg is default value
+        nameEditText = findViewById(R.id.nameView);
+        nameEditText.setText(name);
 
         //SQLite
         helper = new JournalOpenHelper(this);
@@ -49,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
         notificationManager = NotificationManagerCompat.from(this);
 
         // get battery percentage
-        setContentView(R.layout.activity_main);
         batteryText = findViewById(R.id.batteryLife);
 
         IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
@@ -126,6 +138,23 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStop () {
         super.onStop();
+        String name = nameEditText.getText().toString();
+
+        // persistent data storage: save data between executions of the app
+        // few approaches to do this
+        // 1. shared preferences: can store int, double, string, stringset, etc.
+        // 2. read/write to a file
+        // 3. database like SQLite
+        // 4. Room persistent library (abstraction layer on top of SQLite)
+
+        // for 1. we store key value pairs
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFERENCES_FNAME, 0);
+        // 0 Context.MODE_PRIVATE
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(NAME_KEY, name);
+        editor.apply(); // or commit()
+        // save the edits!! very important!!
+
         startService( new Intent( this, NotificationService.class ));
     }
 
