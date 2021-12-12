@@ -55,7 +55,20 @@ public class MainActivity extends AppCompatActivity {
         //SQLite
         helper = new JournalOpenHelper(this);
 
-//        helper.insertJournal(new Journal("Another entry from yesterday", "2021.12.11", "Sat, 11 Dec 2021 12:18", "text", "happy", 50));
+        // Demo entries Run only once, uninstall to clear
+        //Friday
+//        helper.insertJournal(new Journal("Lots of problems today!!", "2021.12.10", "Fri, 10 Dec 2021 9:18", "This is for all you lovers out there. Stop it. Yeah Mom, we know, you’ve told us this story a million times. You felt sorry for him so you decided to go with him to The Fish Under The Sea Dance. Oh, uh, hey you, get your damn hands off her. Do you really think I oughta swear? He’s your brother, Mom.", "Mad 😡", 61));
+//
+//        //Saturday
+//        helper.insertJournal(new Journal("Overslept today...", "2021.12.11", "Sat, 11 Dec 2021 08:18", "I over slept, look I need your help. I have to ask Lorraine out but I don’t know how to do it. I have to ask Lorraine out but I don’t know how to do it. George. George. Weight has nothing to do with it. I know, and all I could say is I’m sorry. I can’t believe you loaned me a car, without telling me it had a blindspot. I could’ve been killed.", "Tired 😴", 78));
+//        helper.insertJournal(new Journal("Weather", "2021.12.11", "Sat, 11 Dec 2021 12:18", "When could weathermen predict the weather, let alone the future. Yeah, alright, bye-bye. What? Perfect, just perfect. Can I go now, Mr. Strickland? Over there, on my hope chest. I’ve never seen purple underwear before, Calvin.", "Happy 😊", 55));
+//        helper.insertJournal(new Journal("Emo Hours", "2021.12.11", "Sat, 11 Dec 2021 01:18", "Oh, then I wanna give her a call, I don’t want her to worry about you. You okay, is everything alright? Can’t be. This is nuts. Aw, c’mon. I’m too loud. I can’t believe it. I’m never gonna get a chance to play in front of anybody. Great Scott. Let me see that photograph again of your brother. Just as I thought, this proves my theory, look at your brother.", "Sad 😭", 22));
+//
+//
+//        //Sunday
+//        helper.insertJournal(new Journal("Bad morning :(", "2021.12.12", "Sat, 12 Dec 2021 9:18", "Pretty Mediocre photographic fakery, they cut off your brother’s hair. Save the clock tower, save the clock tower. Mayor Wilson is sponsoring an initiative to replace that clock. Thirty years ago, lightning struck that clock tower and the clock hasn’t run since. We at the Hill Valley Preservation Society think it should be preserved exactly the way it is as part of our history and heritage. Biff. I will. Oh.", "Mad 😡", 61));
+//        helper.insertJournal(new Journal("Finally got a break", "2021.12.12", "Sat, 12 Dec 2021 12:18", "Science Fiction Theater. Uh, stories, science fiction stories, about visitors coming down to Earth from another planet. Thank god I still got my hair. What on Earth is that thing I’m wearing? Aw yeah, everything is great. Who are you calling spook, pecker-wood.", "Happy 😊", 55));
+//        helper.insertJournal(new Journal("Good end of the day", "2021.12.12", "Sat, 11 Dec 2021 16:18", "When could weathermen predict the weather, let alone the future. Yeah, alright, bye-bye. What? Perfect, just perfect. Can I go now, Mr. Strickland? Over there, on my hope chest. I’ve never seen purple underwear before, Calvin.", "Hopeful 🤔", 89));
 
         // notifications
         notificationManager = NotificationManagerCompat.from(this);

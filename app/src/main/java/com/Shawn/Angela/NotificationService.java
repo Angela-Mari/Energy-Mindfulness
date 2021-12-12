@@ -60,7 +60,7 @@ public class NotificationService extends Service {
 
                 NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), BaseApp.CHANNEL_1_ID)
                         .setSmallIcon(R.drawable.ic_baseline_battery_full_1)
-                        .setContentTitle("What is your Emotional Battery Status?")
+                        .setContentTitle("What is your emotional battery at? Take a sec to reflect.")
                         .setContentText("Battery at " + String.valueOf(batteryPct))
                         .setPriority(NotificationCompat.PRIORITY_HIGH)
                         .setCategory(NotificationCompat.CATEGORY_STATUS);
