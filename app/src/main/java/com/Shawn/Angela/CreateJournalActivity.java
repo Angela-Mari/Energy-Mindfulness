@@ -71,10 +71,9 @@ public class CreateJournalActivity extends AppCompatActivity {
 
 
         int level = batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
-        int scale = batteryStatus.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
 
-        double batteryPct = level * 100 / (float) scale;
-        currentBattery.setText("Current battery at " + String.valueOf(batteryPct));
+        Log.d(TAG, "onCreate: level " + level);
+        currentBattery.setText("Current battery at " + String.valueOf(level));
 
         // Save Journal Entry
         saveEntry = findViewById(R.id.saveEntryButton);
@@ -88,13 +87,14 @@ public class CreateJournalActivity extends AppCompatActivity {
 
                 DateFormat df = new SimpleDateFormat("yyyy.MM.dd");
                 String date = df.format(Calendar.getInstance().getTime());
+                Log.d(TAG, "onClick: date " + date);
                 intent.putExtra("date", date);
                 df = new SimpleDateFormat("EEE, d MMM yyyy HH:mm");
                 String time = df.format(Calendar.getInstance().getTime());
                 intent.putExtra("time", time);
                 intent.putExtra("mood", moodSpinner.getSelectedItem().toString());
                 intent.putExtra("journalEntry", journalEntryEditText.getText().toString());
-                intent.putExtra("battery", batteryPct);
+                intent.putExtra("battery", level);
 
                 //save extras
                 CreateJournalActivity.this.setResult(Activity.RESULT_OK, intent);
@@ -118,7 +118,8 @@ public class CreateJournalActivity extends AppCompatActivity {
 
             default:
                 return super.onOptionsItemSelected(item);
-        }}
+        }
+    }
 
     // Helper Spinner Class
     class SpinnerActivity extends Activity implements AdapterView.OnItemSelectedListener  {

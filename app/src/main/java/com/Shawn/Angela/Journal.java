@@ -7,9 +7,9 @@ public class Journal {
     private String time;
     private String journalEntry;
     private String mood;
-    private double batteryPercentage;
+    private int batteryPercentage;
 
-    public Journal(String title, String date, String time, String journalEntry, String mood, double batteryPercentage) {
+    public Journal(String title, String date, String time, String journalEntry, String mood, int batteryPercentage) {
         this.id = -1;
         this.title = title;
         this.date = date;
@@ -19,7 +19,7 @@ public class Journal {
         this.batteryPercentage = batteryPercentage;
     }
 
-    public Journal(int id, String title, String date, String time, String journalEntry, String mood, double batteryPercentage) {
+    public Journal(int id, String title, String date, String time, String journalEntry, String mood, int batteryPercentage) {
         this.id = id;
         this.title = title;
         this.date = date;
@@ -57,7 +57,7 @@ public class Journal {
         return mood;
     }
 
-    public double getBatteryPercentage() {
+    public int getBatteryPercentage() {
         return batteryPercentage;
     }
 

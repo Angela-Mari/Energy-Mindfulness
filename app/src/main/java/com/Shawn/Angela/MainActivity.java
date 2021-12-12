@@ -54,13 +54,10 @@ public class MainActivity extends AppCompatActivity {
 
 
         int level = batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
-        int scale = batteryStatus.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
 
-        float batteryPct = level * 100 / (float) scale;
+        batteryText.setText("Current Battery Percentage: " + String.valueOf(level) + "%");
 
-        batteryText.setText("Current Battery Percentage: " + String.valueOf(batteryPct) + "%");
-
-        launcher = launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+        launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
                 new ActivityResultCallback<ActivityResult>() {
                     @Override
                     public void onActivityResult(ActivityResult result) {
@@ -76,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
                             String time = data.getStringExtra("time");
                             String mood = data.getStringExtra("mood");
                             String journalEntry = data.getStringExtra("journalEntry");
-                            double battery = data.getDoubleExtra("battery", -1);
+                            int battery = data.getIntExtra("battery", -1);
 
                             Journal newJournal = new Journal(title, date, time, journalEntry, mood, battery);
                             helper.insertJournal(newJournal);
@@ -110,7 +107,11 @@ public class MainActivity extends AppCompatActivity {
                     String msg = "Selected date is " + (month + 1) + "/" + dayOfMonth + "/" + year;
                     //Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(MainActivity.this, JournalView.class);
-                    startActivity(intent);
+
+                    intent.putExtra("year", year);
+                    intent.putExtra("month", month +1);
+                    intent.putExtra("day", dayOfMonth);
+                    launcher.launch(intent);
                 }
             });
         }

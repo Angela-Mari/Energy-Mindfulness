@@ -38,7 +38,7 @@ public class JournalOpenHelper extends SQLiteOpenHelper {
                 TIME + " TEXT, " +
                 JOURNAL_ENTRY + " TEXT, " +
                 MOOD + " TEXT, " +
-                BATTERY_PERCENTAGE + " DOUBLE)";
+                BATTERY_PERCENTAGE + " INTEGER)";
         Log.d(MainActivity.TAG, "onCreate: " + sqlCreate);
         // execute the statement
         db.execSQL(sqlCreate);
@@ -56,7 +56,7 @@ public class JournalOpenHelper extends SQLiteOpenHelper {
         contentValues.put(TIME, journalEntry.getTime());
         contentValues.put(JOURNAL_ENTRY, journalEntry.getJournalEntry());
         contentValues.put(MOOD, journalEntry.getMood());
-        contentValues.put(BATTERY_PERCENTAGE, journalEntry.getBatteryPercentage());
+        contentValues.put(BATTERY_PERCENTAGE, (int) journalEntry.getBatteryPercentage());
 
         SQLiteDatabase db = getWritableDatabase();
         db.insert(ENTRIES_TABLE, null, contentValues);
@@ -66,7 +66,7 @@ public class JournalOpenHelper extends SQLiteOpenHelper {
     // helper method for returning cursor
     public Cursor getSelectedCursor(){
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.query(ENTRIES_TABLE, new String[]{ID, TITLE, DATE, JOURNAL_ENTRY, MOOD, BATTERY_PERCENTAGE}, null, null, null, null, null);
+        Cursor cursor = db.query(ENTRIES_TABLE, new String[]{ID, TITLE, DATE, TIME, JOURNAL_ENTRY, MOOD, BATTERY_PERCENTAGE}, null, null, null, null, null);
         return cursor;
     }
 
@@ -81,7 +81,32 @@ public class JournalOpenHelper extends SQLiteOpenHelper {
             String time = cursor.getString(3);
             String journal = cursor.getString(4);
             String mood = cursor.getString(5);
-            Double battery = cursor.getDouble(6);
+            int battery = cursor.getInt(6);
+            Journal journalEntry = new Journal(id, title, date, time, journal, mood, battery);
+            journalEntries.add(journalEntry);
+        }
+        return journalEntries;
+    }
+
+    public Cursor getDateCursor(String date){
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.query(ENTRIES_TABLE, new String[]{ID, TITLE, DATE, TIME, JOURNAL_ENTRY, MOOD, BATTERY_PERCENTAGE}, "DATE =?", new String[]{""+date}, null, null, null);
+        cursor.moveToFirst();
+        return cursor;
+    }
+
+    public List<Journal> getSelectJournalsByDate(String searchDate){
+        List<Journal> journalEntries = new ArrayList<>();
+        Cursor cursor = getDateCursor(searchDate);
+        // cursor starts one before the first one
+        while (cursor.moveToNext()){ // when false there are no more records
+            int id = cursor.getInt(0);
+            String title = cursor.getString(1);
+            String date = cursor.getString(2);
+            String time = cursor.getString(3);
+            String journal = cursor.getString(4);
+            String mood = cursor.getString(5);
+            int battery = cursor.getInt(6);
             Journal journalEntry = new Journal(id, title, date, time, journal, mood, battery);
             journalEntries.add(journalEntry);
         }
