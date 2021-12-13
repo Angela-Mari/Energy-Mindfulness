@@ -17,7 +17,6 @@
         android:paddingTop="12dp"
         android:hint="Title"
         android:textAlignment="center"
-        android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,16 +32,15 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="10dp"
-        android:paddingTop="10dp"
         android:hint="Date"
-        android:textColor="@color/black"
+        android:paddingTop="10dp"
         android:textAlignment="center"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title"
-        tools:ignore="TextContrastCheck"
-        />
+        tools:ignore="TextContrastCheck" />
 
     <TextView
         android:id="@+id/batteryLevel"
@@ -51,16 +49,15 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="10dp"
-        android:paddingTop="10dp"
         android:hint="Level of battery during entry"
-        android:textColor="@color/black"
+        android:paddingTop="10dp"
         android:textAlignment="center"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/date"
-        tools:ignore="TextContrastCheck"
-        />
+        tools:ignore="TextContrastCheck" />
 
     <TextView
         android:id="@+id/mood"
@@ -69,16 +66,15 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="10dp"
-        android:paddingTop="10dp"
         android:hint="Mood during entry"
-        android:textColor="@color/black"
+        android:paddingTop="10dp"
         android:textAlignment="center"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/batteryLevel"
-        tools:ignore="TextContrastCheck"
-        />
+        tools:ignore="TextContrastCheck" />
 
     <TextView
         android:id="@+id/journalEntry"
@@ -87,10 +83,10 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="10dp"
-        android:paddingTop="10dp"
         android:hint="Journal Entry"
+        android:paddingTop="10dp"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

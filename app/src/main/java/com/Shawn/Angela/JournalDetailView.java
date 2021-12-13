@@ -22,6 +22,8 @@ public class JournalDetailView extends AppCompatActivity {
     TextView titleTextView;
     TextView journalTextView;
 
+    String date;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,25 +46,21 @@ public class JournalDetailView extends AppCompatActivity {
             journalTextView.setText(fullEntryText);
             String entryTitle = intent.getStringExtra("entryTitle");
             titleTextView.setText(entryTitle);
-//            String entryDate = intent.getStringExtra("entryDate");
-//            dateTextView.setText(entryDate);
+            String entryDate = intent.getStringExtra("entryDate");
+            date = entryDate;
             String entryDateTime = intent.getStringExtra("entryDateTime");
             dateTextView.setText(entryDateTime);
             String entryMood = intent.getStringExtra("entryMood");
-            moodView.setText(entryMood);
+            moodView.setText("Mood: " + entryMood);
             int batteryEntry = intent.getIntExtra("batteryEntry", 0);
-            batteryView.setText(String.valueOf(batteryEntry));
+            batteryView.setText("Battery: " + String.valueOf(batteryEntry) + "%");
         }
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         // make sure to pass back date
         switch (item.getItemId()) {
             case android.R.id.home:
-
-                Intent intent = new Intent(JournalDetailView.this, JournalView.class);
-                startActivity(intent);
                 finish();
                 return true;
 
